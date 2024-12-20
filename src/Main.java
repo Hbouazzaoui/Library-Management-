@@ -9,7 +9,7 @@ public class Main {
     static ArrayList<Books> books = new ArrayList<>();
     public  static void  addBook (){
 
-        Books  newBook = new Books();//kteb lktab
+        Books  newBook = new Books();
 
         System.out.println("enter title :");
         newBook. title= scanner.nextLine();
