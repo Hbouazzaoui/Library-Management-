@@ -6,10 +6,14 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Books> books = new ArrayList<>();
 
+<<<<<<< HEAD
     public static void addBook() {
         System.out.println("Enter book ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
+=======
+        Books  newBook = new Books();
+>>>>>>> ebe077ee9a058bd57d8a744490039dc774fb072e
 
         Books newBook = new Books();
 
