@@ -6,14 +6,11 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Books> books = new ArrayList<>();
 
-<<<<<<< HEAD
+
     public static void addBook() {
         System.out.println("Enter book ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
-=======
-        Books  newBook = new Books();
->>>>>>> ebe077ee9a058bd57d8a744490039dc774fb072e
 
         Books newBook = new Books();
 
@@ -44,6 +41,16 @@ public class Main {
         }
     }
 
+    public static void searchBooks(String isbnToSearch) {
+        for (Books book : books) {
+            if (book.getIsbn().equals(isbnToSearch)) {
+                System.out.println("The book is found: " + book);
+                return;
+            }
+        }
+        System.out.println("No book found with this ISBN.");
+    }
+
     public static void main(String[] args) {
         while (true) {
             System.out.println("\n-_-_-_-- Library Management System --_-_-_-");
@@ -65,11 +72,13 @@ public class Main {
                     displayBooks();
                     break;
                 case 3:
+                    System.out.print("Enter the ISBN of the book to search: ");
+                    String isbnToSearch = scanner.nextLine();
+                    searchBooks(isbnToSearch);
                     break;
                 case 4:
                     break;
                 case 5:
-
                     break;
                 case 6:
                     System.out.println("Goodbye!");
@@ -81,3 +90,5 @@ public class Main {
         }
     }
 }
+
+
