@@ -1,17 +1,27 @@
 public class Books {
-    String title ;
-    String auteur ;
-    String isbn;
-    boolean dispo;
+    private int id;
+    private String title;
+    private String auteur;
+    private String isbn;
+    private boolean dispo;
 
-    public Books(String title, String auteur, String isbn, boolean dispo) {
+    public Books() {
+    }
+
+    public Books(int id, String title, String auteur, String isbn, boolean dispo) {
+        this.id = id;
         this.title = title;
         this.auteur = auteur;
         this.isbn = isbn;
         this.dispo = dispo;
     }
 
-    public Books() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -22,12 +32,12 @@ public class Books {
         this.title = title;
     }
 
-    public boolean isDispo() {
-        return dispo;
+    public String getAuteur() {
+        return auteur;
     }
 
-    public void setDispo(boolean dispo) {
-        this.dispo = dispo;
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
     }
 
     public String getIsbn() {
@@ -38,22 +48,22 @@ public class Books {
         this.isbn = isbn;
     }
 
-    public String getAuteur() {
-        return auteur;
+    public boolean isDispo() {
+        return dispo;
     }
 
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
+    public void setDispo(boolean dispo) {
+        this.dispo = dispo;
     }
 
     @Override
     public String toString() {
-        return "Books{" +
-                "title='" + title + '\'' +
-                ", auteur='" + auteur + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", dispo=" + dispo +
+        return "Books {" +
+                "ID=" + id +
+                ", Title='" + title + '\'' +
+                ", Author='" + auteur + '\'' +
+                ", ISBN='" + isbn + '\'' +
+                ", Available=" + dispo +
                 '}';
     }
 }
-
