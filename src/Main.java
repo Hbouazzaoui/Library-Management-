@@ -96,6 +96,26 @@ public class Main {
         }
     }
 
+    public static void removeBook() {
+        System.out.print("Enter the ID of the book to remove: ");
+        int bookId = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean bookFound = false;
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getId() == bookId) {
+                books.remove(i);
+                System.out.println("Book removed successfully.");
+                bookFound = true;
+                break;
+            }
+        }
+
+        if (!bookFound) {
+            System.out.println("No book found with the given ID.");
+        }
+    }
+
     public static void main(String[] args) {
         while (true) {
             System.out.println("\n==-_-_--== Library Management System ==--_-_-==");
@@ -125,6 +145,7 @@ public class Main {
                     updateBook();
                     break;
                 case 5:
+                    removeBook();
                     break;
                 case 6:
                     System.out.println("Goodbye!");
