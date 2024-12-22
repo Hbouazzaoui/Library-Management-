@@ -8,22 +8,22 @@ public class Main {
 
 
     public static void addBook() {
-        System.out.println("Enter book ID:");
+        System.out.print("Enter book ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
 
         Books newBook = new Books();
 
-        System.out.println("Enter title:");
+        System.out.print("Enter title:");
         newBook.setTitle(scanner.nextLine());
 
-        System.out.println("Enter author:");
+        System.out.print("Enter author:");
         newBook.setAuteur(scanner.nextLine());
 
-        System.out.println("Enter ISBN:");
+        System.out.print("Enter ISBN:");
         newBook.setIsbn(scanner.nextLine());
 
-        System.out.println("Enter availability (TRUE/FALSE):");
+        System.out.print("Enter availability (TRUE/FALSE):");
         newBook.setDispo(scanner.nextBoolean());
 
         newBook.setId(id);
@@ -51,9 +51,54 @@ public class Main {
         System.out.println("No book found with this ISBN.");
     }
 
+    public static void updateBook() {
+        System.out.print("Enter the ID of the book to update:");
+        int bookId = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean bookFound = false;
+
+        for (Books book : books) {
+            if (book.getId() == bookId) {
+                bookFound = true;
+
+                System.out.print("Enter new title :");
+                String newTitle = scanner.nextLine();
+                if (!newTitle.isEmpty()) {
+                    book.setTitle(newTitle);
+                }
+
+                System.out.print("Enter new author :");
+                String newAuthor = scanner.nextLine();
+                if (!newAuthor.isEmpty()) {
+                    book.setAuteur(newAuthor);
+                }
+
+                System.out.print("Enter new ISBN :");
+                String newIsbn = scanner.nextLine();
+                if (!newIsbn.isEmpty()) {
+                    book.setIsbn(newIsbn);
+                }
+
+                System.out.println("Enter new availability (true/false) :");
+                String newDispo = scanner.nextLine();
+                if (!newDispo.isEmpty()) {
+                    book.setDispo(Boolean.parseBoolean(newDispo));
+                }
+
+                System.out.println("Book updated successfully: " + book);
+                break;
+            }
+        }
+
+        if (!bookFound) {
+            System.out.println("No book found with the given ID.");
+        }
+    }
+
     public static void main(String[] args) {
         while (true) {
-            System.out.println("\n-_-_-_-- Library Management System --_-_-_-");
+            System.out.println("\n==-_-_--== Library Management System ==--_-_-==");
             System.out.println("1 - Add a Book");
             System.out.println("2 - Display All Books");
             System.out.println("3 - Find Book by ISBN");
@@ -77,6 +122,7 @@ public class Main {
                     searchBooks(isbnToSearch);
                     break;
                 case 4:
+                    updateBook();
                     break;
                 case 5:
                     break;
