@@ -6,29 +6,25 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Books> books = new ArrayList<>();
 
-
     public static void addBook() {
-        System.out.print("Enter book ID:");
-        int id = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter book ISBN: ");
+        String isbn = scanner.nextLine();
 
         Books newBook = new Books();
+        newBook.setIsbn(isbn);
 
-        System.out.print("Enter title:");
+        System.out.print("Enter title: ");
         newBook.setTitle(scanner.nextLine());
 
-        System.out.print("Enter author:");
+        System.out.print("Enter author: ");
         newBook.setAuteur(scanner.nextLine());
 
-        System.out.print("Enter ISBN:");
-        newBook.setIsbn(scanner.nextLine());
-
-        System.out.print("Enter availability (TRUE/FALSE):");
+        System.out.print("Enter availability (true/false): ");
         newBook.setDispo(scanner.nextBoolean());
-
-        newBook.setId(id);
+        scanner.nextLine();
 
         books.add(newBook);
+        System.out.println("Book added successfully.");
     }
 
     public static void displayBooks() {
@@ -52,35 +48,28 @@ public class Main {
     }
 
     public static void updateBook() {
-        System.out.print("Enter the ID of the book to update:");
-        int bookId = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter the ISBN of the book to update: ");
+        String isbnToUpdate = scanner.nextLine();
 
         boolean bookFound = false;
 
         for (Books book : books) {
-            if (book.getId() == bookId) {
+            if (book.getIsbn().equals(isbnToUpdate)) {
                 bookFound = true;
 
-                System.out.print("Enter new title :");
+                System.out.print("Enter new title : ");
                 String newTitle = scanner.nextLine();
                 if (!newTitle.isEmpty()) {
                     book.setTitle(newTitle);
                 }
 
-                System.out.print("Enter new author :");
+                System.out.print("Enter new author : ");
                 String newAuthor = scanner.nextLine();
                 if (!newAuthor.isEmpty()) {
                     book.setAuteur(newAuthor);
                 }
 
-                System.out.print("Enter new ISBN :");
-                String newIsbn = scanner.nextLine();
-                if (!newIsbn.isEmpty()) {
-                    book.setIsbn(newIsbn);
-                }
-
-                System.out.println("Enter new availability (true/false) :");
+                System.out.print("Enter new availability (true/false): ");
                 String newDispo = scanner.nextLine();
                 if (!newDispo.isEmpty()) {
                     book.setDispo(Boolean.parseBoolean(newDispo));
@@ -92,18 +81,17 @@ public class Main {
         }
 
         if (!bookFound) {
-            System.out.println("No book found with the given ID.");
+            System.out.println("No book found with the given ISBN.");
         }
     }
 
     public static void removeBook() {
-        System.out.print("Enter the ID of the book to remove: ");
-        int bookId = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter the ISBN of the book to remove: ");
+        String isbnToRemove = scanner.nextLine();
 
         boolean bookFound = false;
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getId() == bookId) {
+            if (books.get(i).getIsbn().equals(isbnToRemove)) {
                 books.remove(i);
                 System.out.println("Book removed successfully.");
                 bookFound = true;
@@ -112,7 +100,7 @@ public class Main {
         }
 
         if (!bookFound) {
-            System.out.println("No book found with the given ID.");
+            System.out.println("No book found with the given ISBN.");
         }
     }
 
@@ -157,5 +145,3 @@ public class Main {
         }
     }
 }
-
-

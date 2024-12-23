@@ -1,29 +1,26 @@
 public class Books {
-    private int id;
     private String title;
     private String auteur;
-    private String isbn;
+    private String isbn; // ISBN is used as the unique identifier.
     private boolean dispo;
 
+    // Default constructor
     public Books() {
+        this.title = "";
+        this.auteur = "";
+        this.isbn = "";
+        this.dispo = false;
     }
 
-    public Books(int id, String title, String auteur, String isbn, boolean dispo) {
-        this.id = id;
+    // Parameterized constructor
+    public Books(String title, String auteur, String isbn, boolean dispo) {
         this.title = title;
         this.auteur = auteur;
         this.isbn = isbn;
         this.dispo = dispo;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    // Getters and Setters
     public String getTitle() {
         return title;
     }
@@ -59,10 +56,9 @@ public class Books {
     @Override
     public String toString() {
         return "Books {" +
-                "ID=" + id +
+                "ISBN='" + isbn + '\'' +
                 ", Title='" + title + '\'' +
                 ", Author='" + auteur + '\'' +
-                ", ISBN='" + isbn + '\'' +
                 ", Available=" + dispo +
                 '}';
     }
